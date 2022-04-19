@@ -6,7 +6,6 @@ int main() {
 
 	DoubleList<string> CitiesCounter;
 	CustomMap<string, int> CitiesMap;
-	CustomMap<int, string> InverseCitiesMap;
 
 	// go through input file to create Maps based on future graph vertexes and calculate count of them 
 	ifstream file_input;
@@ -22,14 +21,12 @@ int main() {
 		FirstCityName = oneString.substr(0, oneString.find(';'));
 		if (!CitiesCounter.contains(FirstCityName)) {
 			CitiesMap.insert(FirstCityName, CitiesCounter.getSize());
-			InverseCitiesMap.insert(CitiesCounter.getSize(), FirstCityName);
 			CitiesCounter.push_back(FirstCityName);
 		} 
 		oneString.erase(0, oneString.find(';') + 1);
 		SecondCityName = oneString.substr(0, oneString.find(';'));
 		if (!CitiesCounter.contains(SecondCityName)) {
 			CitiesMap.insert(SecondCityName, CitiesCounter.getSize());
-			InverseCitiesMap.insert(CitiesCounter.getSize(), SecondCityName);
 			CitiesCounter.push_back(SecondCityName);
 		}
 		oneString.erase(0, oneString.find(';') + 1);
